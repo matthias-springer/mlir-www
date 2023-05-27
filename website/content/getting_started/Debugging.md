@@ -42,6 +42,10 @@ If the problem is more complex than just a diagnostic / verifier error in a sing
 
 Either way, at the end of this process one should ideally have a `.mlir` file and a single pass (or manageable set of passes) to run in `mlir-opt` for further analysis.
 
+### Debugging Rewrite Pattern Application
+
+`RewritePattern`s must use the `Rewriter` API to modify IR.
+
 ## Miscellaneous tips
 
 - For printf debugging, instead of using `llvm::errs()`, one can emit diagnostics. For example, using `op.emitWarning() << "HERE: " << myVariable;` instead of `llvm::errs() << "HERE: " << myVariable << "\n";`. This prints nicely with colors, shows the op (and its location) for free, and can even give you a stacktrace with `-mlir-print-stacktrace-on-diagnostic`.
